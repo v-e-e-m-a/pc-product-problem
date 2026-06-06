@@ -1,6 +1,46 @@
+def max_list(list):
+    max = list[0]
+    for i in range(len(list) - n):
+        product = list[i]
+        for j in range(i+1, n + i):
+            product *= list[j]
+        if product > max:
+            max = product
+    return max
+
 def largest_product(grid, n):
-    # Your solution here!
-    pass
+    max = grid[0][0]
+    flat_horizontal = []
+    flat_vertical = []
+
+    num_row = len(grid)
+    num_col = len(grid[0])
+
+    for i in range(num_row): # Number of rows in the grid
+        for j in range(num_col): # Number of elements in the row
+            flat_horizontal.append(grid[i][j])
+            flat_vertical.append(grid[j][i])
+
+    max_horizontal = max_list(flat_horizontal)
+    max_vertical = max_list(flat_vertical)
+
+    if max_horizontal > max_vertical:
+        return max_horizontal
+    else:
+        return max_vertical
+    
+    # Start at the beginning of list
+    # Nested for loop starting at second element
+    # Iterate the nested loop for n - 2 times
+'''    
+    for i in range(len(flat_horizontal)):
+        product = flat_horizontal[i]
+        for j in range(i+1, n + i):
+            product *= flat_horizontal[j]
+        if product > max:
+            max = product
+'''
+
 
 
 grid = [
